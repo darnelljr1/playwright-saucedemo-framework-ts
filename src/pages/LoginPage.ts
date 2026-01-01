@@ -1,5 +1,6 @@
 import { Page, Locator, expect } from '@playwright/test';
 import { BasePage } from './BasePage';
+import { assertVisibleAndEnabled } from '../utils/test-helpers';
 
 export class LoginPage extends BasePage {
   readonly usernameInput: Locator;
@@ -8,6 +9,8 @@ export class LoginPage extends BasePage {
   readonly titleSwagLabs: Locator;
   readonly headerUsernames: Locator;
   readonly headerPassword: Locator;
+  readonly errorMessage: Locator;
+
 
   constructor(page: Page) {
     super(page);
@@ -18,10 +21,26 @@ export class LoginPage extends BasePage {
     this.titleSwagLabs = page.locator('.login_logo');
     this.headerUsernames = page.getByRole('heading', { name: 'Accepted usernames are:' });
     this.headerPassword = page.getByRole('heading', { name: 'Password for all users:' });
+    this.errorMessage = page.locator('[data-test="error"]');
   }
 
   async goto() {
     await this.page.goto('https://www.saucedemo.com/');
+    await expect (this.page).toHaveURL('https://www.saucedemo.com/');
+  }
+
+  async validateLoginElements() {
+    await assertVisibleAndEnabled(
+        [
+            this.usernameInput,
+            this.passwordInput,
+            this.loginButton
+
+        ]);
+    }
+
+  async expectLoginError() {
+  await expect(this.errorMessage).toBeVisible();
   }
 
   async login(username: string, password: string) {
