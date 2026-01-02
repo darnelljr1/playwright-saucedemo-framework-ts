@@ -2,7 +2,7 @@ import { test } from '../../src/fixtures/test-fixtures';
 import dotenv from 'dotenv';
 dotenv.config();
 
-test('login page loads and elements are visible', async ({loginPage}) => {
+test('login page loads and elements are visible', async ({loginPage, productsPage}) => {
     await loginPage.goto();
     await loginPage.validateLoginElements();
 
@@ -10,4 +10,5 @@ test('login page loads and elements are visible', async ({loginPage}) => {
     const password = process.env.PASSWORD_STANDARD as string;
 
     await loginPage.login(username, password);
+    await productsPage.expectURL();
 });
