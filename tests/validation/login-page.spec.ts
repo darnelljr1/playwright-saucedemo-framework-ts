@@ -1,6 +1,4 @@
 import { test } from '../../src/fixtures/test-fixtures';
-import dotenv from 'dotenv';
-dotenv.config();
 
 test('login page loads and elements are visible', async ({loginPage, productsPage}) => {
     await loginPage.goto();

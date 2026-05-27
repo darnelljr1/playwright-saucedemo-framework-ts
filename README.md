@@ -19,3 +19,7 @@ The application I'm testing is SauceDemo, used just as a stable surface to demon
 Planned extension:
 - API test coverage integrated alongside UI workflows
 
+## Current Goals
+- Increase Test Coverage. Build out tests, experiment, then once a few tests are added, re evaluate where your repo is. Follow the above framework checklist to get a direction of what your repo should do. You really don't have much hard stuff left to do. Build out some tests, polish this up, try some methods, functions etc. Just practice and build on it. 
+- immediate next action step - Go on sauce demo website. Look to finish/ build out login test.
+- 2. Add a page validation test 

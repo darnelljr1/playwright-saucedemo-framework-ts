@@ -25,8 +25,7 @@ export class LoginPage extends BasePage {
   }
 
   async goto() {
-    await this.page.goto('https://www.saucedemo.com/');
-    await expect (this.page).toHaveURL('https://www.saucedemo.com/');
+    await this.page.goto('/');
   }
 
   async validateLoginElements() {
