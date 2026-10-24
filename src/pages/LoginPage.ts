@@ -47,4 +47,11 @@ export class LoginPage extends BasePage {
     await this.passwordInput.fill(password);
     await this.loginButton.click();
   }
+
+  async clickLogin() {
+    await this.loginButton.click();
+  }
+async expectErrorMessageText(expected: string) {
+  await expect(this.errorMessage).toHaveText(expected);
+  }
 }
